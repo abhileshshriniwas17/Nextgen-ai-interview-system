@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Interview Pro</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- 🔒 LOGIN + TRIAL PROTECTION -->
+<script>
+if(!localStorage.getItem("userLoggedIn")){
+    let trials = localStorage.getItem("trials") || 0;
+
+    if(trials <= 0){
+        window.location.href = "index.html"; // login page
+    }
+}
+</script>
+
+</head>
+
+<body class="bg-black text-white font-[Inter]">
+
+<!-- ================= NAVBAR ================= -->
+<nav class="flex justify-between items-center px-10 py-6 border-b border-gray-800">
+<h2 class="text-2xl font-bold gradient-text">AI Interview Pro</h2>
+
+<button onclick="logout()" class="text-sm text-red-400 hover:text-red-500">
+Logout
+</button>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="text-center pt-16 pb-10 px-6">
+
+<h1 class="text-5xl md:text-6xl font-bold leading-tight">
+<span class="gradient-text">Next Gen</span> AI Interview
+</h1>
+
+<p class="mt-6 text-gray-400 max-w-2xl mx-auto">
+Smart AI interviewer with emotion detection, voice analysis, resume-based questions and real-time feedback.
+</p>
+
+</section>
+
+<!-- ================= CONTROL PANEL ================= -->
+<section class="max-w-5xl mx-auto px-6">
+
+<div class="glass p-6 rounded-2xl grid md:grid-cols-4 gap-4">
+
+<select id="domain" class="p-3 bg-gray-900 rounded-lg border border-gray-700">
+<option value="">Domain</option>
+<option value="tech">Technical</option>
+<option value="non-tech">Non Technical</option>
+</select>
+
+<select id="branch" class="p-3 bg-gray-900 rounded-lg border border-gray-700">
+<option value="">Branch</option>
+<option value="cse">CSE</option>
+<option value="it">IT</option>
+<option value="aia">AI/ML</option>
+<option value="mech">Mechanical</option>
+<option value="civil">Civil</option>
+<option value="entc">ENTC</option>
+<option value="ee">Electrical</option>
+</select>
+
+<select id="round" class="p-3 bg-gray-900 rounded-lg border border-gray-700">
+<option value="">Round</option>
+<option value="hr">HR</option>
+<option value="technical">Technical</option>
+<option value="attitude">Attitude</option>
+</select>
+
+<div class="flex gap-2">
+<input type="file" id="resumeUpload" class="hidden"/>
+
+<button onclick="document.getElementById('resumeUpload').click()"
+class="w-full px-4 py-2 border border-gray-600 rounded-lg hover:bg-gray-800">
+📄 Resume
+</button>
+</div>
+
+</div>
+
+<p id="resumeStatus" class="text-center mt-3 text-sm text-green-400"></p>
+
+</section>
+
+<!-- ================= MAIN INTERVIEW ================= -->
+<section class="max-w-6xl mx-auto px-6 mt-10 grid md:grid-cols-2 gap-8">
+
+<!-- LEFT -->
+<div class="glass p-6 rounded-2xl">
+
+<h2 class="text-xl mb-4 text-purple-400">AI Interview</h2>
+
+<div id="questionBox" class="text-lg text-purple-300 min-h-[60px]"></div>
+
+<div class="mt-6 flex gap-4">
+
+<button id="startBtn"
+class="px-6 py-3 bg-purple-600 rounded-xl hover:bg-purple-700 w-full">
+Start Interview
+</button>
+
+</div>
+
+<!-- ANSWER -->
+<div class="mt-6">
+
+<input id="answerInput" type="text"
+placeholder="Type or speak your answer..."
+class="w-full p-4 rounded-lg text-black"/>
+
+<div class="flex gap-4 mt-4">
+
+<button id="submitAnswer"
+class="w-full px-4 py-2 bg-green-600 rounded-lg">
+Submit
+</button>
+
+<button id="voiceBtn"
+class="w-full px-4 py-2 bg-blue-600 rounded-lg">
+🎤 Speak
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- RIGHT -->
+<div class="glass p-6 rounded-2xl text-center">
+
+<h2 class="text-xl mb-4 text-blue-400">AI Analysis</h2>
+
+<video id="video"
+autoplay muted playsinline
+class="w-full rounded-xl border border-gray-700">
+</video>
+
+<p id="emotionText" class="mt-4 text-yellow-400">
+Emotion: Detecting...
+</p>
+
+<p id="confidenceText" class="text-green-400 mt-2">
+Confidence: 0%
+</p>
+
+<p id="aiStatus" class="text-purple-400 mt-2">
+Status: Waiting...
+</p>
+
+</div>
+
+</section>
+
+<!-- ================= CHARTS ================= -->
+<section class="max-w-4xl mx-auto px-6 mt-12">
+
+<div class="glass p-6 rounded-2xl">
+
+<canvas id="resultChart"></canvas>
+<canvas id="emotionChart" class="mt-6"></canvas>
+
+</div>
+
+</section>
+
+<!-- ================= REPORT ================= -->
+<section class="max-w-5xl mx-auto px-6 mt-12 mb-20">
+
+<div id="reportBox" class="hidden glass p-8 rounded-2xl">
+
+<h2 class="text-3xl font-bold mb-6 text-center">
+Final AI Report
+</h2>
+
+<p id="finalScore" class="text-center text-green-400 mb-10"></p>
+
+<div class="grid md:grid-cols-3 gap-6">
+
+<div class="bg-gray-900 p-6 rounded-xl">
+<h3 class="text-green-400 mb-2 font-semibold">Strengths</h3>
+<p id="strengthText"></p>
+</div>
+
+<div class="bg-gray-900 p-6 rounded-xl">
+<h3 class="text-red-400 mb-2 font-semibold">Weaknesses</h3>
+<p id="weaknessText"></p>
+</div>
+
+<div class="bg-gray-900 p-6 rounded-xl">
+<h3 class="text-yellow-400 mb-2 font-semibold">Improve</h3>
+<p id="improveText"></p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= LOGOUT SCRIPT ================= -->
+<script>
+function logout(){
+    localStorage.removeItem("userLoggedIn");
+    window.location.href = "index.html";
+}
+</script>
+
+<!-- ================= SCRIPTS ================= -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_detection"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>

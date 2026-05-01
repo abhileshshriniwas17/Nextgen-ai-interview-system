@@ -1,0 +1,207 @@
+/* ================= GLOBAL ================= */
+
+body{
+    background: radial-gradient(circle at top, #0f0f1a, #050507);
+    color:white;
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+}
+
+/* ================= ANIMATED BACKGROUND ================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:linear-gradient(120deg,#7c3aed,#06b6d4,#6366f1);
+    opacity:0.08;
+    z-index:-1;
+    animation:gradientMove 10s infinite alternate;
+}
+
+@keyframes gradientMove{
+    0%{transform:translateX(-10%) translateY(-10%)}
+    100%{transform:translateX(10%) translateY(10%)}
+}
+
+/* ================= GRADIENT TEXT ================= */
+
+.gradient-text{
+    background:linear-gradient(90deg,#a855f7,#6366f1,#06b6d4);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-size:200% auto;
+    animation:shine 4s linear infinite;
+}
+
+@keyframes shine{
+    to{background-position:200% center;}
+}
+
+/* ================= GLASS EFFECT ================= */
+
+.glass{
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(14px);
+    border:1px solid rgba(255,255,255,0.1);
+    box-shadow:0 0 20px rgba(168,85,247,0.15);
+    transition:all 0.3s ease;
+}
+
+.glass:hover{
+    transform:translateY(-5px) scale(1.01);
+    box-shadow:0 0 30px rgba(168,85,247,0.4);
+}
+
+/* ================= BUTTONS ================= */
+
+button{
+    transition:all 0.3s ease;
+    font-weight:500;
+}
+
+button:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 20px rgba(168,85,247,0.6);
+}
+
+/* ================= INPUT ================= */
+
+#answerInput{
+    border:none;
+    outline:none;
+    font-size:16px;
+    background:#ffffff;
+    box-shadow:0 0 10px rgba(255,255,255,0.1);
+    transition:0.3s;
+}
+
+#answerInput:focus{
+    box-shadow:0 0 20px rgba(168,85,247,0.8);
+}
+
+/* ================= SELECT DROPDOWN ================= */
+
+select{
+    transition:all 0.3s ease;
+}
+
+select:hover{
+    border-color:#a855f7;
+    box-shadow:0 0 10px rgba(168,85,247,0.5);
+}
+
+/* ================= QUESTION BOX ================= */
+
+#questionBox{
+    min-height:60px;
+    font-weight:500;
+    animation:fadeIn 0.6s ease;
+}
+
+/* ================= VIDEO CAMERA ================= */
+
+#video{
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 0 25px rgba(6,182,212,0.4);
+    transition:0.3s;
+}
+
+#video:hover{
+    box-shadow:0 0 40px rgba(6,182,212,0.7);
+}
+
+/* ================= AI STATUS TEXT ================= */
+
+#aiStatus{
+    font-size:14px;
+    opacity:0.9;
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    0%{opacity:0.6}
+    50%{opacity:1}
+    100%{opacity:0.6}
+}
+
+/* ================= EMOTION TEXT ================= */
+
+#emotionText{
+    font-weight:500;
+    text-shadow:0 0 10px rgba(255,255,0,0.6);
+}
+
+#confidenceText{
+    font-weight:500;
+    text-shadow:0 0 10px rgba(0,255,150,0.6);
+}
+
+/* ================= REPORT ================= */
+
+#reportBox{
+    animation:fadeIn 1s ease;
+}
+
+#reportBox h3{
+    font-size:18px;
+}
+
+#reportBox p{
+    font-size:14px;
+    color:#cbd5f5;
+}
+
+/* ================= CHART ================= */
+
+canvas{
+    background:rgba(255,255,255,0.03);
+    border-radius:16px;
+    padding:12px;
+    box-shadow:0 0 20px rgba(99,102,241,0.2);
+}
+
+/* ================= SCROLLBAR ================= */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#0a0a0f;
+}
+
+::-webkit-scrollbar-thumb{
+    background:linear-gradient(#7c3aed,#06b6d4);
+    border-radius:10px;
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0px);
+    }
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+    nav{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    #answerInput{
+        width:100%;
+    }
+
+}
