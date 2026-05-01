@@ -1,4 +1,4 @@
-# Nextgen-ai-interview-system
+# 🚀 Next Gen AI Interview Simulator
 
 An AI-powered interview simulation platform designed to help students practice and improve their interview skills using real-time feedback, emotion detection, and voice analysis.
 
@@ -14,23 +14,30 @@ An AI-powered interview simulation platform designed to help students practice a
 
 ---
 
+## 🖥️ Demo Preview
+
+![http://127.0.0.1:5500/frontend/dashboard.html]
+
+---
 
 ## ⚙️ Tech Stack
 
-* Frontend: React.js (UI in progress)
+* Frontend: HTML,CSS,AUTH.JS,SCRIPT.JS (UI in progress)
 * Backend: Python (Flask)
 * AI/ML:
 
   * NLP (Question + Answer Evaluation)
   * Computer Vision (Emotion Detection)
   * Speech Recognition
-* Database: MongoDB
+  * Resume analysis
+  * Resume Based Interview
+* Database: FIREBASE
 
 ---
 
 ## 🚧 Project Status
 
-⚠️ Actively developed AI system with working prototype (v0.7) (≈75% complete)
+⚠️ This project is currently under active development (≈75% complete)
 
 ### Completed:
 
@@ -68,5 +75,5 @@ I am actively looking for internship opportunities in:
 
 ## 📬 Contact
 
-* Email: [your@email.com](mailto:your@email.com)
-* LinkedIn: add-your-link-here
+* Email: [abhileshshrinirwas9@gmail.com]
+* LinkedIn: [https://www.linkedin.com/in/abhilesh-shriniwas-569254347/]
